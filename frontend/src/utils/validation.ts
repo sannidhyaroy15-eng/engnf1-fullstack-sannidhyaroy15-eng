@@ -35,9 +35,9 @@ export const ticketImportSchema = z.object({
 export const resourceSchema = z.object({
   name: z.string().trim().min(3, 'Name must be 3-60 characters').max(60, 'Name cannot exceed 60 characters'),
   type: z.enum(['ROOM', 'LAB', 'EQUIPMENT']),
-  capacity: z.coerce.number().int('Capacity must be an integer').min(1, 'Capacity must be at least 1').max(500, 'Capacity cannot exceed 500'),
+  capacity: z.number().int('Capacity must be an integer').min(1, 'Capacity must be at least 1').max(500, 'Capacity cannot exceed 500'),
   description: z.string().max(300, 'Description cannot exceed 300 characters').optional().nullable(),
-  isActive: z.boolean().default(true),
+  isActive: z.boolean(),
 });
 
 export const bookingCreateSchema = z.object({
